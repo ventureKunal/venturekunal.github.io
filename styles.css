@@ -664,6 +664,74 @@ code {
   border-color: rgba(255, 255, 255, 0.22);
 }
 
+/* Hero Social Action Grid */
+.hero-social-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .hero-social-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+.hero-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition:
+    transform 0.22s var(--ease-out-expo),
+    border-color 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero-social-btn svg {
+  flex-shrink: 0;
+  color: var(--copper-bright);
+  transition: transform 0.22s var(--ease-out-expo), color 0.22s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-social-btn:hover {
+    transform: translateY(-2px);
+    border-color: rgba(212, 163, 115, 0.48);
+    background: rgba(212, 163, 115, 0.08);
+    box-shadow: 0 10px 24px -10px rgba(212, 163, 115, 0.32);
+  }
+
+  .hero-social-btn:hover svg {
+    transform: scale(1.06);
+  }
+}
+
+.hero-social-btn:active {
+  transform: scale(0.97);
+}
+
+.copy-chip-mail {
+  color: var(--copper);
+  flex-shrink: 0;
+}
+
 /* Copy Chips */
 .copy-row {
   display: flex;
@@ -1265,42 +1333,118 @@ code {
 }
 
 .social-dock {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
 
-.social-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 8px 16px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.035);
+@media (min-width: 640px) {
+  .social-dock {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .social-dock {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+.connect-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  min-width: 0;
+  min-height: 98px;
+  padding: 14px 15px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.09);
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--text-primary);
   transition:
-    border-color 0.2s ease,
-    background-color 0.2s ease,
-    transform 0.2s var(--ease-out-expo);
+    transform 0.22s var(--ease-out-expo),
+    border-color 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.social-pill:hover {
-  border-color: rgba(212, 163, 115, 0.4);
-  background: rgba(212, 163, 115, 0.08);
-  transform: translateY(-1px);
+.connect-card-email {
+  grid-column: 1 / -1;
+  border-color: rgba(212, 163, 115, 0.26);
+  background: rgba(212, 163, 115, 0.045);
 }
 
-.social-pill:active {
-  transform: scale(0.97);
+@media (min-width: 640px) {
+  .connect-card-email {
+    grid-column: auto;
+  }
 }
 
-.social-pill-accent {
-  border-color: rgba(212, 163, 115, 0.28);
+.connect-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.connect-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   color: var(--copper-bright);
+  flex-shrink: 0;
+}
+
+.connect-arrow {
+  color: var(--text-muted);
+  transition: transform 0.22s var(--ease-out-expo), color 0.22s ease;
+}
+
+.connect-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.connect-name {
+  font-family: var(--font-display);
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.connect-handle {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .connect-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(212, 163, 115, 0.45);
+    background: rgba(212, 163, 115, 0.08);
+    box-shadow: 0 12px 28px -12px rgba(212, 163, 115, 0.28);
+  }
+
+  .connect-card:hover .connect-arrow {
+    color: var(--copper-bright);
+    transform: translate(2px, -2px);
+  }
+}
+
+.connect-card:active {
+  transform: scale(0.98);
 }
 
 .footer-bottom {
